@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NeoStats Document Intelligence</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<header class="app-header">
+    <div>
+        <h1>NeoStats Document Intelligence</h1>
+        <p>Financial Document Processing & Intelligence</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="card">
+
+        <div class="section-header">
+            <div>
+                <h2>Process Document</h2>
+                <p>
+                    Upload a PDF, JPG, JPEG or PNG financial document.
+                </p>
+            </div>
+        </div>
+
+        <form id="documentForm">
+
+            <div class="form-group">
+
+                <label for="documentType">
+                    Document Type
+                </label>
+
+                <select id="documentType" required>
+
+                    <option value="">
+                        Select document type
+                    </option>
+
+                    <option value="invoice">
+                        Invoice
+                    </option>
+
+                    <option value="balance_sheet">
+                        Balance Sheet
+                    </option>
+
+                    <option value="profit_and_loss">
+                        Profit & Loss
+                    </option>
+
+                    <option value="cash_flow_statement">
+                        Cash Flow
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="documentFile">
+                    Document
+                </label>
+
+                <input
+                    type="file"
+                    id="documentFile"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    required
+                >
+
+            </div>
+
+            <button
+                type="submit"
+                id="processButton"
+            >
+                Process Document
+            </button>
+
+        </form>
+
+        <div id="message"></div>
+
+        <div
+            id="processingPanel"
+            class="processing-panel hidden"
+        >
+
+            <h3>Processing Status</h3>
+
+            <div class="processing-step" id="stepUpload">
+                <span class="step-icon">○</span>
+                <span>Document uploaded</span>
+            </div>
+
+            <div class="processing-step" id="stepValidation">
+                <span class="step-icon">○</span>
+                <span>Document validation</span>
+            </div>
+
+            <div class="processing-step" id="stepExtraction">
+                <span class="step-icon">○</span>
+                <span>Text extraction / OCR</span>
+            </div>
+
+            <div class="processing-step" id="stepAI">
+                <span class="step-icon">○</span>
+                <span>AI field & table extraction</span>
+            </div>
+
+            <div class="processing-step" id="stepFinancial">
+                <span class="step-icon">○</span>
+                <span>Financial calculation validation</span>
+            </div>
+
+            <div class="processing-step" id="stepStorage">
+                <span class="step-icon">○</span>
+                <span>Store processing result</span>
+            </div>
+
+            <div class="processing-step" id="stepComplete">
+                <span class="step-icon">○</span>
+                <span>Processing completed</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="card">
+
+        <div class="section-header">
+
+            <div>
+                <h2>Processed Documents</h2>
+
+                <p>
+                    Previously processed documents stored in the database.
+                </p>
+            </div>
+
+            <button
+                id="refreshDocuments"
+                class="secondary-button"
+            >
+                Refresh
+            </button>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Document Name</th>
+                        <th>Document Type</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="documentsTableBody"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="/static/js/dashboard.js"></script>
+
+</body>
+</html>

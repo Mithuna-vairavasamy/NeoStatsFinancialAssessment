@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document Result - NeoStats</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+</head>
+
+<body>
+
+    <main>
+
+        <h1>Document Result</h1>
+
+        <p>
+            <a href="/">← Back to Dashboard</a>
+        </p>
+
+        <!-- Document Information -->
+        <section>
+            <h2>Document Information</h2>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Document Name</th>
+                        <td id="documentName"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Document Type</th>
+                        <td id="documentType"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Processing Status</th>
+                        <td id="processingStatus"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Overall Confidence</th>
+                        <td id="overallConfidence"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <!-- File Validation -->
+        <section>
+            <h2>File Validation</h2>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <th>File Type</th>
+                        <td id="fileType"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Supported</th>
+                        <td id="isSupported"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Readable</th>
+                        <td id="isReadable"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Page Count</th>
+                        <td id="pageCount"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Status</th>
+                        <td id="fileStatus"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <!-- Extracted Data -->
+        <section>
+            <h2>Extracted Data</h2>
+
+            <div id="extractedData">
+            </div>
+        </section>
+
+
+        <!-- Financial Validation -->
+        <section>
+            <h2>Financial Validation</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Check</th>
+                        <th>Formula</th>
+                        <th>Calculated</th>
+                        <th>Reported</th>
+                        <th>Variance</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="validationTableBody">
+                </tbody>
+            </table>
+
+            <p>
+                <strong>Overall Status:</strong>
+                <span id="validationStatus"></span>
+            </p>
+
+            <p>
+                <strong>Issues:</strong>
+            </p>
+
+            <ul id="validationIssues">
+            </ul>
+        </section>
+
+
+        <!-- Processing Metadata -->
+        <section>
+            <h2>Processing Metadata</h2>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <th>OCR Used</th>
+                        <td id="ocrUsed"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Processed At</th>
+                        <td id="processedAt"></td>
+                    </tr>
+
+                    <tr>
+                        <th>Processing Time</th>
+                        <td id="processingTime"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+        <!-- Raw JSON -->
+        <section>
+            <h2>Raw JSON</h2>
+
+            <pre id="rawJson"></pre>
+        </section>
+
+    </main>
+
+    <script src="/static/js/document_result.js"></script>
+
+</body>
+</html>

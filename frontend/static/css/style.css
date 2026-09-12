@@ -1,0 +1,455 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f6f8fb;
+    --surface: #ffffff;
+    --border: #e6eaf0;
+    --text: #172033;
+    --muted: #6b7280;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --success: #16a34a;
+    --danger: #dc2626;
+    --warning: #d97706;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.app-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 30px 0;
+}
+
+.app-header > div {
+    width: min(1180px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text);
+}
+
+.app-header p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    width: min(1180px, calc(100% - 48px));
+    margin: 40px auto;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 34px;
+    margin-bottom: 28px;
+    box-shadow:
+        0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.section-header h2 {
+    margin: 0 0 7px;
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+.section-header p {
+    margin: 0;
+    color: var(--muted);
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+select,
+input[type="file"] {
+    width: 100%;
+    max-width: 650px;
+    min-height: 46px;
+    padding: 11px 14px;
+    border: 1px solid #d7dce5;
+    border-radius: 8px;
+    background: white;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+}
+
+select:focus,
+input[type="file"]:focus {
+    border-color: var(--primary);
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    min-height: 46px;
+    padding: 0 22px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        transform 0.1s ease;
+}
+
+button:hover {
+    background: var(--primary-dark);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.secondary-button {
+    background: #eef2f7;
+    color: #374151;
+}
+
+.secondary-button:hover {
+    background: #e2e8f0;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+#message {
+    margin-top: 22px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   PROCESSING STATUS
+========================= */
+
+.processing-panel {
+    margin-top: 30px;
+    padding: 24px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.processing-panel h3 {
+    margin: 0 0 18px;
+    font-size: 17px;
+}
+
+.processing-step {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-height: 44px;
+    padding: 9px 4px;
+    color: var(--muted);
+    border-bottom: 1px solid #edf0f4;
+}
+
+.processing-step:last-child {
+    border-bottom: none;
+}
+
+.step-icon {
+    width: 25px;
+    height: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.step-active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.step-complete {
+    color: var(--success);
+    font-weight: 600;
+}
+
+.step-failed {
+    color: var(--danger);
+    font-weight: 600;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* =========================
+   TABLES
+========================= */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 15px 16px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+th:last-child,
+td:last-child {
+    border-right: none;
+}
+
+thead th {
+    background: #f8fafc;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover td {
+    background: #fafbfc;
+}
+
+
+/* =========================
+   RESULT PAGE
+========================= */
+
+main {
+    width: min(1180px, calc(100% - 48px));
+    margin: 40px auto;
+}
+
+main > h1 {
+    margin: 0 0 12px;
+    font-size: 30px;
+    letter-spacing: -0.5px;
+}
+
+main > p {
+    margin-bottom: 30px;
+}
+
+main > section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    margin-bottom: 28px;
+    box-shadow:
+        0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+main > section h2 {
+    margin: 0 0 22px;
+    font-size: 21px;
+}
+
+main > section h3 {
+    margin: 28px 0 12px;
+    font-size: 17px;
+}
+
+
+/* =========================
+   STATUS TEXT
+========================= */
+
+#processingStatus,
+#validationStatus {
+    font-weight: 700;
+}
+
+
+/* =========================
+   RAW JSON
+========================= */
+
+pre {
+    margin: 0;
+    padding: 24px;
+    background: #111827;
+    color: #e5e7eb;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-family:
+        "Cascadia Code",
+        Consolas,
+        monospace;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   LISTS
+========================= */
+
+ul {
+    margin-top: 10px;
+    padding-left: 22px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 760px) {
+
+    .app-header {
+        padding: 24px 0;
+    }
+
+    .app-header > div,
+    .container,
+    main {
+        width: calc(100% - 30px);
+    }
+
+    .container,
+    main {
+        margin-top: 24px;
+    }
+
+    .card,
+    main > section {
+        padding: 22px;
+        border-radius: 11px;
+    }
+
+    .section-header {
+        flex-direction: column;
+        margin-bottom: 24px;
+    }
+
+    .section-header button {
+        width: 100%;
+    }
+
+    th,
+    td {
+        padding: 11px 12px;
+        font-size: 13px;
+    }
+
+    main > h1 {
+        font-size: 26px;
+    }
+}

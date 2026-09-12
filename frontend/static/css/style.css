@@ -1,455 +1,1991 @@
+/* =========================================================
+   NEOSTATS DOCUMENT INTELLIGENCE
+   LEDGER-INSPIRED ENTERPRISE DASHBOARD
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
 * {
     box-sizing: border-box;
 }
 
-:root {
-    --bg: #f6f8fb;
-    --surface: #ffffff;
-    --border: #e6eaf0;
-    --text: #172033;
-    --muted: #6b7280;
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --success: #16a34a;
-    --danger: #dc2626;
-    --warning: #d97706;
+html {
+    scroll-behavior: smooth;
 }
 
+:root {
+
+    /* base surfaces */
+    --page-bg: #eef1f0;
+    --surface: #ffffff;
+    --surface-soft: #f6f8f7;
+
+    /* ink / navy family */
+    --navy: #0e1a2b;
+    --navy-light: #16263c;
+    --navy-soft: #223349;
+
+    /* structure */
+    --border: #dde3e1;
+    --border-light: #e9edec;
+
+    /* text */
+    --text: #131d29;
+    --text-secondary: #47554f;
+    --muted: #74847d;
+
+    /* ledger green accent (primary) */
+    --accent: #0f7a63;
+    --accent-dark: #0b5f4d;
+    --accent-soft: #e6f3ee;
+
+    /* status */
+    --success: #1c8a5a;
+    --success-soft: #e9f6ee;
+
+    --danger: #b3402f;
+    --danger-soft: #fbeeec;
+
+    --warning: #a8710f;
+    --warning-soft: #fbf1e2;
+
+    --radius: 8px;
+    --radius-sm: 5px;
+
+    --font-ui: "Manrope", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    --font-mono: "IBM Plex Mono", "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+
+    --shadow:
+        0 1px 2px rgba(14, 26, 43, 0.04),
+        0 10px 24px -12px rgba(14, 26, 43, 0.10);
+}
+
+
+/* =========================================================
+   BASE
+========================================================= */
+
 body {
+
     margin: 0;
-    background: var(--bg);
+
+    min-height: 100vh;
+
+    background: var(--page-bg);
+
     color: var(--text);
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+
+    font-family: var(--font-ui);
+
+    font-size: 14px;
+
+    line-height: 1.55;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.app-header {
+
+    width: 100%;
+
+    background: var(--navy);
+
+    border-bottom: 1px solid #1c2c42;
+
+    color: #ffffff;
+}
+
+.header-inner {
+
+    width: min(1180px, calc(100% - 48px));
+
+    min-height: 68px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.brand-logo {
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--accent);
+
+    color: #ffffff;
+
+    border-radius: 6px;
+
+    font-family: var(--font-mono);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+}
+
+.brand-name {
+
+    color: #ffffff;
+
     font-size: 15px;
+
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.1px;
+}
+
+.brand-product {
+
+    margin-top: 2px;
+
+    color: #93a3ba;
+
+    font-size: 11.5px;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   HEADER RIGHT
+========================================================= */
+
+.header-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+.environment-label {
+
+    color: #7c8ba2;
+
+    font-size: 11.5px;
+
+    font-weight: 500;
+}
+
+.system-status {
+
+    height: 30px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 0 11px;
+
+    border: 1px solid rgba(66, 214, 177, 0.22);
+
+    border-radius: var(--radius-sm);
+
+    background: rgba(15, 122, 99, 0.14);
+
+    color: #7fe0c3;
+
+    font-size: 11.5px;
+
+    font-weight: 600;
+}
+
+.status-dot {
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #4fd9ac;
+
+    box-shadow:
+        0 0 0 3px rgba(79, 217, 172, 0.14);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.container {
+
+    width: min(1180px, calc(100% - 48px));
+
+    margin: 0 auto;
+
+    padding: 44px 0 72px;
+}
+
+
+/* =========================================================
+   PAGE INTRO
+========================================================= */
+
+.page-intro {
+
+    margin-bottom: 30px;
+
+    padding-bottom: 28px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.page-kicker {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 12px;
+
+    color: var(--accent-dark);
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.page-kicker::before {
+
+    content: "";
+
+    width: 14px;
+    height: 2px;
+
+    background: var(--accent);
+
+    border-radius: 1px;
+}
+
+.page-intro h1 {
+
+    max-width: 740px;
+
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: 33px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.6px;
+}
+
+.page-intro h1 span {
+
+    color: var(--text-secondary);
+
+    font-weight: 500;
+}
+
+.page-intro p {
+
+    max-width: 640px;
+
+    margin: 12px 0 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
     line-height: 1.6;
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* =========================================================
+   MAIN WORKSPACE
+========================================================= */
 
-.app-header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 30px 0;
-}
+.workspace {
 
-.app-header > div {
-    width: min(1180px, calc(100% - 48px));
-    margin: 0 auto;
-}
+    display: grid;
 
-.app-header h1 {
-    margin: 0;
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: var(--text);
-}
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(0, 0.95fr);
 
-.app-header p {
-    margin: 6px 0 0;
-    color: var(--muted);
-    font-size: 15px;
-}
+    min-height: 480px;
 
-
-/* =========================
-   MAIN CONTAINER
-========================= */
-
-.container {
-    width: min(1180px, calc(100% - 48px));
-    margin: 40px auto;
-}
-
-
-/* =========================
-   CARDS
-========================= */
-
-.card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 34px;
     margin-bottom: 28px;
-    box-shadow:
-        0 4px 16px rgba(15, 23, 42, 0.04);
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
 }
 
-.section-header {
+
+/* =========================================================
+   UPLOAD SECTION
+========================================================= */
+
+.upload-section {
+
+    padding: 36px;
+
+    border-right: 1px solid var(--border);
+}
+
+.section-label {
+
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 30px;
-    margin-bottom: 30px;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+
+    color: var(--accent-dark);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
 }
 
-.section-header h2 {
-    margin: 0 0 7px;
-    font-size: 22px;
+.section-label::before {
+
+    content: "";
+
+    width: 12px;
+    height: 2px;
+
+    background: var(--accent);
+
+    border-radius: 1px;
+
+    flex-shrink: 0;
+}
+
+.upload-section h2,
+.pipeline-section h2,
+.history-header h2 {
+
+    margin: 0;
+
+    color: var(--navy);
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.2px;
+
     line-height: 1.3;
 }
 
-.section-header p {
-    margin: 0;
+.section-description {
+
+    max-width: 480px;
+
+    margin: 8px 0 28px;
+
     color: var(--muted);
+
+    font-size: 12.5px;
+
+    line-height: 1.6;
 }
 
 
-/* =========================
+/* =========================================================
    FORM
-========================= */
+========================================================= */
 
-.form-group {
-    margin-bottom: 24px;
+.input-block {
+
+    margin-bottom: 22px;
 }
 
-label {
+.input-block label {
+
     display: block;
-    margin-bottom: 9px;
-    font-size: 14px;
+
+    margin-bottom: 8px;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+
     font-weight: 600;
-    color: var(--text);
 }
 
-select,
-input[type="file"] {
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+select {
+
     width: 100%;
-    max-width: 650px;
-    min-height: 46px;
-    padding: 11px 14px;
-    border: 1px solid #d7dce5;
-    border-radius: 8px;
-    background: white;
-    color: var(--text);
-    font-size: 14px;
-    outline: none;
-}
 
-select:focus,
-input[type="file"]:focus {
-    border-color: var(--primary);
-    box-shadow:
-        0 0 0 3px rgba(37, 99, 235, 0.10);
-}
+    height: 46px;
 
+    padding: 0 14px;
 
-/* =========================
-   BUTTONS
-========================= */
-
-button {
-    min-height: 46px;
-    padding: 0 22px;
-    border: none;
-    border-radius: 8px;
-    background: var(--primary);
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition:
-        background 0.15s ease,
-        transform 0.1s ease;
-}
-
-button:hover {
-    background: var(--primary-dark);
-}
-
-button:active {
-    transform: translateY(1px);
-}
-
-button:disabled {
-    opacity: 0.55;
-    cursor: not-allowed;
-}
-
-.secondary-button {
-    background: #eef2f7;
-    color: #374151;
-}
-
-.secondary-button:hover {
-    background: #e2e8f0;
-}
-
-
-/* =========================
-   MESSAGE
-========================= */
-
-#message {
-    margin-top: 22px;
-    padding: 12px 15px;
-    border-radius: 8px;
-    font-weight: 600;
-}
-
-
-/* =========================
-   PROCESSING STATUS
-========================= */
-
-.processing-panel {
-    margin-top: 30px;
-    padding: 24px;
-    background: #f8fafc;
     border: 1px solid var(--border);
-    border-radius: 12px;
+
+    border-radius: var(--radius-sm);
+
+    background: #ffffff;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 13.5px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
-.processing-panel h3 {
-    margin: 0 0 18px;
-    font-size: 17px;
+select:hover {
+
+    border-color: #b7c3bd;
 }
 
-.processing-step {
+select:focus {
+
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 3px rgba(15, 122, 99, 0.12);
+}
+
+
+/* =========================================================
+   UPLOAD ZONE
+========================================================= */
+
+.upload-zone {
+
+    position: relative;
+
+    min-height: 84px;
+
     display: flex;
+
     align-items: center;
-    gap: 13px;
-    min-height: 44px;
-    padding: 9px 4px;
-    color: var(--muted);
-    border-bottom: 1px solid #edf0f4;
+
+    gap: 14px;
+
+    padding: 17px;
+
+    border: 1px dashed #b8c4bd;
+
+    border-radius: var(--radius-sm);
+
+    background: #fafcfb;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease;
 }
 
-.processing-step:last-child {
-    border-bottom: none;
+.upload-zone:hover {
+
+    border-color: var(--accent);
+
+    background: var(--accent-soft);
 }
 
-.step-icon {
-    width: 25px;
-    height: 25px;
-    display: inline-flex;
+.upload-symbol {
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
     align-items: center;
     justify-content: center;
+
     flex-shrink: 0;
-    font-size: 14px;
+
+    border-radius: var(--radius-sm);
+
+    background: var(--accent-soft);
+
+    color: var(--accent-dark);
+
+    font-size: 19px;
+
+    font-weight: 600;
+}
+
+.upload-copy {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.upload-copy strong {
+
+    color: var(--text-secondary);
+
+    font-size: 12.5px;
+
     font-weight: 700;
 }
 
-.step-active {
-    color: var(--primary);
+.upload-copy span {
+
+    color: var(--muted);
+
+    font-size: 11.5px;
+}
+
+
+/* actual input */
+
+.upload-zone input[type="file"] {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   UPLOAD META
+========================================================= */
+
+.upload-meta {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 8px;
+
+    color: #8b978f;
+
+    font-family: var(--font-mono);
+
+    font-size: 10.5px;
+}
+
+
+/* =========================================================
+   ACTION
+========================================================= */
+
+.action-row {
+
+    margin-top: 30px;
+}
+
+.primary-button {
+
+    min-height: 44px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    padding: 0 20px;
+
+    border: 1px solid var(--accent);
+
+    border-radius: var(--radius-sm);
+
+    background: var(--accent);
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 10px rgba(15, 122, 99, 0.20);
+
+    transition:
+        background 0.15s ease,
+        transform 0.1s ease,
+        box-shadow 0.15s ease;
+}
+
+.primary-button:hover {
+
+    background: var(--accent-dark);
+
+    border-color: var(--accent-dark);
+
+    box-shadow:
+        0 5px 14px rgba(15, 122, 99, 0.24);
+}
+
+.primary-button:active {
+
+    transform: translateY(1px);
+
+    box-shadow: none;
+}
+
+.button-arrow {
+
+    font-size: 15px;
+
+    line-height: 1;
+
+    transition: transform 0.15s ease;
+}
+
+.primary-button:hover .button-arrow {
+
+    transform: translateX(2px);
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+#message {
+
+    margin-top: 18px;
+
+    font-size: 12.5px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   PIPELINE SECTION
+========================================================= */
+
+.pipeline-section {
+
+    padding: 36px;
+
+    background: var(--surface-soft);
+}
+
+.pipeline-section .section-description {
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   PIPELINE PREVIEW
+========================================================= */
+
+.pipeline-preview {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    min-height: 105px;
+
+    padding: 18px;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    background: #ffffff;
+}
+
+.preview-number {
+
+    color: #cfd9d5;
+
+    font-family: var(--font-mono);
+
+    font-size: 34px;
+
     font-weight: 600;
+
+    line-height: 1;
+}
+
+.pipeline-preview strong {
+
+    display: block;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.pipeline-preview p {
+
+    margin: 4px 0 0;
+
+    color: var(--muted);
+
+    font-size: 11.5px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   PROCESSING PANEL
+========================================================= */
+
+.processing-panel {
+
+    padding: 18px;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    background: #ffffff;
+}
+
+.processing-panel.hidden {
+
+    display: none !important;
+}
+
+.pipeline-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding-bottom: 14px;
+
+    margin-bottom: 4px;
+
+    border-bottom: 1px solid var(--border-light);
+}
+
+.pipeline-header strong {
+
+    display: block;
+
+    color: var(--navy);
+
+    font-size: 12.5px;
+
+    font-weight: 700;
+}
+
+.pipeline-header span {
+
+    display: block;
+
+    margin-top: 1px;
+
+    color: var(--muted);
+
+    font-size: 10.5px;
+}
+
+.pipeline-indicator {
+
+    padding: 4px 8px;
+
+    border: 1px solid #a9dcc9;
+
+    border-radius: 4px;
+
+    background: var(--accent-soft);
+
+    color: var(--accent-dark);
+
+    font-family: var(--font-mono);
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   PROCESSING STEP
+========================================================= */
+
+.processing-step {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 48px;
+
+    padding: 8px 2px;
+
+    border-bottom: 1px solid var(--border-light);
+
+    color: var(--muted);
+}
+
+.processing-step:last-child {
+
+    border-bottom: none;
+}
+
+.processing-step:not(:last-child)::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 13px;
+
+    top: 34px;
+
+    width: 1px;
+
+    height: 20px;
+
+    background: #d7e0dc;
+}
+
+.step-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: 1px solid #d3ded9;
+
+    border-radius: 50%;
+
+    background: #f4f7f6;
+
+    color: #7c8c85;
+
+    font-family: var(--font-mono);
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+.step-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1px;
+}
+
+.step-content strong {
+
+    color: inherit;
+
+    font-size: 11.5px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+.step-content span {
+
+    color: #95a49e;
+
+    font-size: 10.5px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   ACTIVE / COMPLETE / FAILED
+========================================================= */
+
+.step-active {
+
+    color: var(--accent-dark);
+
+}
+
+.step-active .step-icon {
+
+    border-color: #93d6c1;
+
+    background: var(--accent-soft);
+
+    color: var(--accent-dark);
 }
 
 .step-complete {
+
     color: var(--success);
-    font-weight: 600;
+}
+
+.step-complete .step-icon {
+
+    border-color: #9dd8b7;
+
+    background: var(--success-soft);
+
+    color: var(--success);
 }
 
 .step-failed {
+
     color: var(--danger);
+}
+
+.step-failed .step-icon {
+
+    border-color: #e6b3a9;
+
+    background: var(--danger-soft);
+
+    color: var(--danger);
+}
+
+
+/* =========================================================
+   DOCUMENT HISTORY
+========================================================= */
+
+.history-section {
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+.history-header {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 30px 32px 24px;
+}
+
+.history-header p {
+
+    margin: 6px 0 0;
+
+    color: var(--muted);
+
+    font-size: 11.5px;
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
+
+.secondary-button {
+
+    min-height: 36px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 0 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    background: #ffffff;
+
+    color: var(--text-secondary);
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease;
+}
+
+.secondary-button:hover {
+
+    border-color: #adbdb5;
+
+    background: #f7faf9;
+}
+
+.secondary-button span {
+
+    font-size: 14px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-wrapper {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-top: 1px solid var(--border);
+}
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+thead {
+
+    background: var(--surface-soft);
+}
+
+th {
+
+    padding: 13px 18px;
+
+    border-bottom: 1px solid var(--border);
+
+    color: #63756c;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    text-align: left;
+}
+
+td {
+
+    padding: 15px 18px;
+
+    border-bottom: 1px solid var(--border-light);
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+
+    vertical-align: middle;
+}
+
+tbody tr:last-child td {
+
+    border-bottom: none;
+}
+
+tbody tr {
+
+    transition: background 0.12s ease;
+}
+
+tbody tr:hover {
+
+    background: #fafcfb;
+}
+
+#documentsTableBody:empty::after {
+
+    content: "No processed documents yet.";
+
+    display: block;
+
+    padding: 32px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   RESULT PAGE SUPPORT
+========================================================= */
+
+main > h1 {
+
+    margin: 0 0 8px;
+
+    color: var(--navy);
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.4px;
+
+    line-height: 1.25;
+}
+
+main > p {
+
+    margin: 0 0 26px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+main > p:has(a[href="/"]) {
+
+    margin: 0 0 22px;
+
+    font-size: 13px;
+}
+
+main > p a[href="/"] {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: var(--text-secondary);
+
     font-weight: 600;
 }
 
-.hidden {
+main > p a[href="/"]:hover {
+
+    color: var(--accent-dark);
+
+    text-decoration: none;
+}
+
+main > section {
+
+    margin-bottom: 22px;
+
+    padding: 28px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+main > section h2 {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin: 0 0 20px;
+
+    color: var(--navy);
+
+    font-size: 17px;
+
+    font-weight: 700;
+}
+
+main > section h2::before {
+
+    content: "";
+
+    width: 3px;
+    height: 16px;
+
+    background: var(--accent);
+
+    border-radius: 2px;
+}
+
+main > section h3 {
+
+    margin: 24px 0 10px;
+
+    color: var(--navy);
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   KEY-VALUE TABLES
+   (Document Information / File Validation / Processing
+   Metadata sections: <table><tbody><tr><th>Label</th>
+   <td>Value</td></tr></tbody></table>)
+========================================================= */
+
+main > section > table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    border: 1px solid var(--border-light);
+
+    border-radius: var(--radius-sm);
+
+    overflow: hidden;
+}
+
+main > section > table > tbody > tr > th {
+
+    width: 240px;
+
+    padding: 13px 18px;
+
+    background: var(--surface-soft);
+
+    border-bottom: 1px solid var(--border-light);
+
+    border-right: 1px solid var(--border-light);
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-align: left;
+
+    vertical-align: top;
+}
+
+main > section > table > tbody > tr > td {
+
+    padding: 13px 18px;
+
+    border-bottom: 1px solid var(--border-light);
+
+    color: var(--text);
+
+    font-size: 12.5px;
+
+    font-weight: 500;
+}
+
+main > section > table > tbody > tr:last-child > th,
+main > section > table > tbody > tr:last-child > td {
+
+    border-bottom: none;
+}
+
+/* numeric / mono-leaning values read better in the data face */
+#overallConfidence,
+#pageCount,
+#processedAt,
+#processingTime {
+
+    font-family: var(--font-mono);
+
+    font-size: 12px;
+    letter-spacing: 0.1px;
+}
+
+
+/* =========================================================
+   EXTRACTED DATA
+========================================================= */
+
+#extractedData {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+    gap: 1px;
+
+    background: var(--border-light);
+
+    border: 1px solid var(--border-light);
+
+    border-radius: var(--radius-sm);
+
+    overflow: hidden;
+}
+
+#extractedData:empty::after {
+
+    content: "No extracted fields available.";
+
+    display: block;
+
+    grid-column: 1 / -1;
+
+    padding: 26px;
+
+    background: var(--surface);
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+/* generic key/value pair markup fallback: dl, or divs/li with
+   a label + value, however document_result.js renders them */
+#extractedData dl,
+#extractedData > div,
+#extractedData > li {
+
+    margin: 0;
+
+    padding: 14px 16px;
+
+    background: var(--surface);
+}
+
+#extractedData dt,
+#extractedData > div > strong,
+#extractedData > div > .label,
+#extractedData > li > strong,
+#extractedData > li > .label {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--muted);
+
+    font-size: 10.5px;
+
+    font-weight: 600;
+}
+
+#extractedData dd,
+#extractedData > div > span,
+#extractedData > div > .value,
+#extractedData > li > span,
+#extractedData > li > .value {
+
+    margin: 0;
+
+    color: var(--text);
+
+    font-family: var(--font-mono);
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+#extractedData table {
+
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+#extractedData table th,
+#extractedData table td {
+
+    padding: 12px 16px;
+
+    background: var(--surface);
+
+    border-bottom: 1px solid var(--border-light);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FINANCIAL VALIDATION TABLE
+========================================================= */
+
+section:has(#validationTableBody) > table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    border: 1px solid var(--border-light);
+
+    border-radius: var(--radius-sm);
+
+    overflow: hidden;
+
+    margin-bottom: 18px;
+}
+
+section:has(#validationTableBody) > table thead {
+
+    background: var(--surface-soft);
+}
+
+section:has(#validationTableBody) > table th {
+
+    padding: 11px 16px;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--muted);
+
+    font-size: 10.5px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    text-align: left;
+}
+
+#validationTableBody td {
+
+    padding: 12px 16px;
+
+    border-bottom: 1px solid var(--border-light);
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+}
+
+#validationTableBody td:nth-child(2),
+#validationTableBody td:nth-child(3),
+#validationTableBody td:nth-child(4),
+#validationTableBody td:nth-child(5) {
+
+    font-family: var(--font-mono);
+
+    font-size: 11.5px;
+}
+
+#validationTableBody tr:last-child td {
+
+    border-bottom: none;
+}
+
+#validationTableBody tr:hover td {
+
+    background: var(--surface-soft);
+}
+
+#validationTableBody:empty {
+
     display: none;
 }
 
 
-/* =========================
-   TABLES
-========================= */
+/* =========================================================
+   VALIDATION ISSUES LIST
+========================================================= */
 
-.table-container {
-    width: 100%;
-    overflow-x: auto;
+#validationIssues {
+
+    margin: 8px 0 0;
+
+    padding: 0;
+
+    list-style: none;
 }
 
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: white;
-    margin-top: 12px;
-    overflow: hidden;
+#validationIssues:empty::after {
+
+    content: "No issues found.";
+
+    display: block;
+
+    padding: 12px 14px;
+
+    background: var(--success-soft);
+
+    border: 1px solid #c3e4d3;
+
+    border-radius: var(--radius-sm);
+
+    color: var(--success);
+
+    font-size: 12px;
+
+    font-weight: 600;
 }
 
-th,
-td {
-    padding: 15px 16px;
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    text-align: left;
-    vertical-align: top;
+#validationIssues li {
+
+    margin: 0 0 8px;
+
+    padding: 10px 14px;
+
+    background: var(--warning-soft);
+
+    border: 1px solid #edd3a3;
+
+    border-left: 3px solid var(--warning);
+
+    border-radius: var(--radius-sm);
+
+    color: #6f4c0e;
+
+    font-size: 12px;
+
+    line-height: 1.5;
 }
 
-th:last-child,
-td:last-child {
-    border-right: none;
-}
+#validationIssues li:last-child {
 
-thead th {
-    background: #f8fafc;
-    color: #374151;
-    font-size: 13px;
-    font-weight: 700;
-    white-space: nowrap;
-}
-
-tbody tr:last-child td {
-    border-bottom: none;
-}
-
-tbody tr:hover td {
-    background: #fafbfc;
-}
-
-
-/* =========================
-   RESULT PAGE
-========================= */
-
-main {
-    width: min(1180px, calc(100% - 48px));
-    margin: 40px auto;
-}
-
-main > h1 {
-    margin: 0 0 12px;
-    font-size: 30px;
-    letter-spacing: -0.5px;
-}
-
-main > p {
-    margin-bottom: 30px;
-}
-
-main > section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 32px;
-    margin-bottom: 28px;
-    box-shadow:
-        0 4px 16px rgba(15, 23, 42, 0.04);
-}
-
-main > section h2 {
-    margin: 0 0 22px;
-    font-size: 21px;
-}
-
-main > section h3 {
-    margin: 28px 0 12px;
-    font-size: 17px;
+    margin-bottom: 0;
 }
 
 
-/* =========================
-   STATUS TEXT
-========================= */
+/* =========================================================
+   RESULT STATUS BADGES
+========================================================= */
 
 #processingStatus,
-#validationStatus {
+#validationStatus,
+#isSupported,
+#isReadable,
+#fileStatus,
+#ocrUsed {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    min-height: 26px;
+
+    padding: 4px 11px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 999px;
+
+    background: var(--surface-soft);
+
+    color: var(--text-secondary);
+
+    font-size: 11.5px;
+
     font-weight: 700;
 }
 
+#processingStatus::before,
+#validationStatus::before {
 
-/* =========================
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+}
+
+/* success-leaning values, matched case-insensitively is not
+   possible in pure CSS — document_result.js can add one of
+   these modifier classes to color the badge correctly */
+#processingStatus.status-success,
+#validationStatus.status-success,
+#isSupported.status-success,
+#isReadable.status-success,
+#fileStatus.status-success,
+#ocrUsed.status-success {
+
+    background: var(--success-soft);
+
+    border-color: #b9e2cc;
+
+    color: var(--success);
+}
+
+#processingStatus.status-warning,
+#validationStatus.status-warning,
+#fileStatus.status-warning {
+
+    background: var(--warning-soft);
+
+    border-color: #edd3a3;
+
+    color: var(--warning);
+}
+
+#processingStatus.status-danger,
+#validationStatus.status-danger,
+#isSupported.status-danger,
+#isReadable.status-danger,
+#fileStatus.status-danger {
+
+    background: var(--danger-soft);
+
+    border-color: #eec2ba;
+
+    color: var(--danger);
+}
+
+#processingStatus.status-pending,
+#validationStatus.status-pending {
+
+    background: var(--accent-soft);
+
+    border-color: #a9d9c9;
+
+    color: var(--accent-dark);
+}
+
+
+/* =========================================================
    RAW JSON
-========================= */
+========================================================= */
 
 pre {
+
     margin: 0;
-    padding: 24px;
-    background: #111827;
-    color: #e5e7eb;
-    border-radius: 10px;
+
+    padding: 20px;
+
+    border: 1px solid #223349;
+
+    border-radius: var(--radius-sm);
+
+    background: var(--navy);
+
+    color: #d9e2ef;
+
     overflow-x: auto;
-    font-family:
-        "Cascadia Code",
-        Consolas,
-        monospace;
-    font-size: 13px;
+
+    font-family: var(--font-mono);
+
+    font-size: 11.5px;
+
     line-height: 1.7;
 }
 
 
-/* =========================
+/* =========================================================
    LINKS
-========================= */
+========================================================= */
 
 a {
-    color: var(--primary);
+
+    color: var(--accent-dark);
+
     text-decoration: none;
+
     font-weight: 600;
 }
 
 a:hover {
+
     text-decoration: underline;
 }
 
 
-/* =========================
+/* =========================================================
    LISTS
-========================= */
+========================================================= */
 
 ul {
+
     margin-top: 10px;
+
     padding-left: 22px;
 }
 
 li {
+
     margin-bottom: 6px;
 }
 
 
-/* =========================
+/* =========================================================
+   SCROLLBARS
+========================================================= */
+
+.table-wrapper::-webkit-scrollbar,
+pre::-webkit-scrollbar {
+
+    height: 7px;
+}
+
+.table-wrapper::-webkit-scrollbar-track,
+pre::-webkit-scrollbar-track {
+
+    background: transparent;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+
+    background: #c5d0ca;
+
+    border-radius: 20px;
+}
+
+pre::-webkit-scrollbar-thumb {
+
+    background: #38475d;
+
+    border-radius: 20px;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px rgba(15, 122, 99, 0.20);
+}
+
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media (max-width: 760px) {
+@media (max-width: 850px) {
 
-    .app-header {
-        padding: 24px 0;
-    }
+    .header-inner,
+    .container {
 
-    .app-header > div,
-    .container,
-    main {
         width: calc(100% - 30px);
     }
 
-    .container,
-    main {
-        margin-top: 24px;
+    .workspace {
+
+        grid-template-columns: 1fr;
     }
 
-    .card,
-    main > section {
-        padding: 22px;
-        border-radius: 11px;
+    .upload-section {
+
+        border-right: none;
+
+        border-bottom: 1px solid var(--border);
     }
 
-    .section-header {
+    .page-intro h1 {
+
+        font-size: 27px;
+    }
+
+    .environment-label {
+
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 560px) {
+
+    .header-inner {
+
+        min-height: 62px;
+    }
+
+    .header-right {
+
+        gap: 0;
+    }
+
+    .container {
+
+        padding-top: 30px;
+
+        padding-bottom: 42px;
+    }
+
+    .page-intro {
+
+        margin-bottom: 22px;
+
+        padding-bottom: 22px;
+    }
+
+    .page-intro h1 {
+
+        font-size: 24px;
+
+        letter-spacing: -0.3px;
+    }
+
+    .page-intro p {
+
+        font-size: 12.5px;
+    }
+
+    .upload-section,
+    .pipeline-section {
+
+        padding: 24px;
+    }
+
+    .history-header {
+
+        align-items: flex-start;
+
         flex-direction: column;
-        margin-bottom: 24px;
+
+        padding: 24px;
     }
 
-    .section-header button {
+    .secondary-button {
+
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .primary-button {
+
         width: 100%;
     }
 
     th,
     td {
-        padding: 11px 12px;
-        font-size: 13px;
+
+        padding: 12px 13px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior: auto;
     }
 
-    main > h1 {
-        font-size: 26px;
+    *,
+    *::before,
+    *::after {
+
+        transition: none !important;
     }
 }

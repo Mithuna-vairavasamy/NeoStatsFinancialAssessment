@@ -1,191 +1,640 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="NeoStats Document Intelligence"
+    >
 
     <title>NeoStats Document Intelligence</title>
 
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
 </head>
+
 
 <body>
 
-<header class="app-header">
-    <div>
-        <h1>NeoStats Document Intelligence</h1>
-        <p>Financial Document Processing & Intelligence</p>
-    </div>
-</header>
+    <!-- =====================================================
+         APPLICATION HEADER
+    ====================================================== -->
 
-<main class="container">
+    <header class="app-header">
 
-    <section class="card">
+        <div class="header-inner">
 
-        <div class="section-header">
-            <div>
-                <h2>Process Document</h2>
-                <p>
-                    Upload a PDF, JPG, JPEG or PNG financial document.
-                </p>
+            <div class="brand">
+
+                <div class="brand-logo">
+                    NS
+                </div>
+
+                <div class="brand-copy">
+
+                    <div class="brand-name">
+                        NeoStats
+                    </div>
+
+                    <div class="brand-product">
+                        Document Intelligence
+                    </div>
+
+                </div>
+
             </div>
+
+
+            <div class="header-right">
+
+                <div class="environment-label">
+                    Document processing
+                </div>
+
+                <div class="system-status">
+
+                    <span class="status-dot"></span>
+
+                    <span>
+                        System ready
+                    </span>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <form id="documentForm">
+    </header>
 
-            <div class="form-group">
 
-                <label for="documentType">
-                    Document Type
-                </label>
 
-                <select id="documentType" required>
+    <!-- =====================================================
+         MAIN APPLICATION
+    ====================================================== -->
 
-                    <option value="">
-                        Select document type
-                    </option>
+    <main class="container">
 
-                    <option value="invoice">
-                        Invoice
-                    </option>
 
-                    <option value="balance_sheet">
-                        Balance Sheet
-                    </option>
+        <!-- =================================================
+             PAGE INTRO
+        ================================================== -->
 
-                    <option value="profit_and_loss">
-                        Profit & Loss
-                    </option>
+        <section class="page-intro">
 
-                    <option value="cash_flow_statement">
-                        Cash Flow
-                    </option>
+            <div>
 
-                </select>
+                <div class="page-kicker">
+                    Financial document automation
+                </div>
+
+                <h1>
+                    Process financial documents
+                    <span>with intelligence.</span>
+                </h1>
+
+                <p>
+                    Validate, extract and verify financial
+                    information from invoices and financial statements.
+                </p>
 
             </div>
 
-            <div class="form-group">
+        </section>
 
-                <label for="documentFile">
-                    Document
-                </label>
 
-                <input
-                    type="file"
-                    id="documentFile"
-                    accept=".pdf,.jpg,.jpeg,.png"
-                    required
+
+        <!-- =================================================
+             PROCESS WORKSPACE
+        ================================================== -->
+
+        <section class="workspace">
+
+
+            <!-- LEFT : UPLOAD -->
+
+            <div class="upload-section">
+
+                <div class="section-label">
+                    Document input
+                </div>
+
+                <h2>
+                    Start a new process
+                </h2>
+
+                <p class="section-description">
+                    Select the document type and upload the
+                    financial document you want to analyse.
+                </p>
+
+
+
+                <form id="documentForm">
+
+
+                    <!-- DOCUMENT TYPE -->
+
+                    <div class="input-block">
+
+                        <label for="documentType">
+                            Document type
+                        </label>
+
+                        <select
+                            id="documentType"
+                            required
+                        >
+
+                            <option value="">
+                                Choose document type
+                            </option>
+
+                            <option value="invoice">
+                                Invoice
+                            </option>
+
+                            <option value="balance_sheet">
+                                Balance Sheet
+                            </option>
+
+                            <option value="profit_and_loss">
+                                Profit &amp; Loss
+                            </option>
+
+                            <option value="cash_flow_statement">
+                                Cash Flow
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- FILE -->
+
+                    <div class="input-block">
+
+                        <label for="documentFile">
+                            Financial document
+                        </label>
+
+
+                        <div class="upload-zone">
+
+                            <div class="upload-symbol">
+                                ↑
+                            </div>
+
+                            <div class="upload-copy">
+
+                                <strong>
+                                    Select document
+                                </strong>
+
+                                <span>
+                                    PDF, JPG, JPEG or PNG
+                                </span>
+
+                            </div>
+
+
+                            <input
+                                type="file"
+                                id="documentFile"
+                                accept=".pdf,.jpg,.jpeg,.png"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="upload-meta">
+
+                            <span>
+                                Maximum 3 pages
+                            </span>
+
+                            <span>
+                                PDF / Image
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ACTION -->
+
+                    <div class="action-row">
+
+                        <button
+                            type="submit"
+                            id="processButton"
+                            class="primary-button"
+                        >
+                            Process document
+
+                            <span class="button-arrow">
+                                →
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+
+                <!-- MESSAGE -->
+
+                <div id="message"></div>
+
+            </div>
+
+
+
+            <!-- RIGHT : PIPELINE -->
+
+            <div class="pipeline-section">
+
+                <div class="section-label">
+                    Processing pipeline
+                </div>
+
+                <h2>
+                    Intelligent processing
+                </h2>
+
+                <p class="section-description">
+                    Your document moves through validation,
+                    extraction and financial verification.
+                </p>
+
+
+                <div
+                    id="processingPanel"
+                    class="processing-panel hidden"
                 >
 
+                    <div class="pipeline-header">
+
+                        <div>
+
+                            <strong>
+                                Processing document
+                            </strong>
+
+                            <span>
+                                Pipeline activity
+                            </span>
+
+                        </div>
+
+                        <div class="pipeline-indicator">
+                            Live
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 1 -->
+
+                    <div
+                        class="processing-step"
+                        id="stepUpload"
+                    >
+
+                        <span class="step-icon">
+                            1
+                        </span>
+
+                        <div class="step-content">
+
+                            <strong>
+                                Document uploaded
+                            </strong>
+
+                            <span>
+                                Receiving document
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 2 -->
+
+                    <div
+                        class="processing-step"
+                        id="stepValidation"
+                    >
+
+                        <span class="step-icon">
+                            2
+                        </span>
+
+                        <div class="step-content">
+
+                            <strong>
+                                Document validation
+                            </strong>
+
+                            <span>
+                                Checking file integrity and format
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 3 -->
+
+                    <div
+                        class="processing-step"
+                        id="stepExtraction"
+                    >
+
+                        <span class="step-icon">
+                            3
+                        </span>
+
+                        <div class="step-content">
+
+                            <strong>
+                                Text extraction / OCR
+                            </strong>
+
+                            <span>
+                                Extracting document content
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 4 -->
+
+                    <div
+                        class="processing-step"
+                        id="stepAI"
+                    >
+
+                        <span class="step-icon">
+                            4
+                        </span>
+
+                        <div class="step-content">
+
+                            <strong>
+                                AI field &amp; table extraction
+                            </strong>
+
+                            <span>
+                                Structuring financial information
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 5 -->
+
+                    <div
+                        class="processing-step"
+                        id="stepFinancial"
+                    >
+
+                        <span class="step-icon">
+                            5
+                        </span>
+
+                        <div class="step-content">
+
+                            <strong>
+                                Financial calculation validation
+                            </strong>
+
+                            <span>
+                                Checking financial consistency
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 6 -->
+
+                    <div
+                        class="processing-step"
+                        id="stepStorage"
+                    >
+
+                        <span class="step-icon">
+                            6
+                        </span>
+
+                        <div class="step-content">
+
+                            <strong>
+                                Store processing result
+                            </strong>
+
+                            <span>
+                                Saving structured result
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 7 -->
+
+                    <div
+                        class="processing-step"
+                        id="stepComplete"
+                    >
+
+                        <span class="step-icon">
+                            7
+                        </span>
+
+                        <div class="step-content">
+
+                            <strong>
+                                Processing completed
+                            </strong>
+
+                            <span>
+                                Document processing finished
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DEFAULT PIPELINE PREVIEW -->
+
+                <div
+                    class="pipeline-preview"
+                    id="pipelinePreview"
+                >
+
+                    <div class="preview-number">
+                        7
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Automated verification
+                        </strong>
+
+                        <p>
+                            Validation → OCR → AI extraction
+                            → financial checks → database
+                        </p>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <button
-                type="submit"
-                id="processButton"
-            >
-                Process Document
-            </button>
+        </section>
 
-        </form>
 
-        <div id="message"></div>
 
-        <div
-            id="processingPanel"
-            class="processing-panel hidden"
-        >
+        <!-- =================================================
+             DOCUMENT HISTORY
+        ================================================== -->
 
-            <h3>Processing Status</h3>
+        <section class="history-section">
 
-            <div class="processing-step" id="stepUpload">
-                <span class="step-icon">○</span>
-                <span>Document uploaded</span>
+
+            <div class="history-header">
+
+                <div>
+
+                    <div class="section-label">
+                        Document history
+                    </div>
+
+                    <h2>
+                        Processed documents
+                    </h2>
+
+                    <p>
+                        Documents processed and stored in the system.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="refreshDocuments"
+                    class="secondary-button"
+                    type="button"
+                >
+                    <span>
+                        ↻
+                    </span>
+
+                    Refresh
+                </button>
+
             </div>
 
-            <div class="processing-step" id="stepValidation">
-                <span class="step-icon">○</span>
-                <span>Document validation</span>
+
+
+            <!-- TABLE -->
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Document
+                            </th>
+
+                            <th>
+                                Type
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Processed
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="documentsTableBody">
+                    </tbody>
+
+                </table>
+
             </div>
 
-            <div class="processing-step" id="stepExtraction">
-                <span class="step-icon">○</span>
-                <span>Text extraction / OCR</span>
-            </div>
-
-            <div class="processing-step" id="stepAI">
-                <span class="step-icon">○</span>
-                <span>AI field & table extraction</span>
-            </div>
-
-            <div class="processing-step" id="stepFinancial">
-                <span class="step-icon">○</span>
-                <span>Financial calculation validation</span>
-            </div>
-
-            <div class="processing-step" id="stepStorage">
-                <span class="step-icon">○</span>
-                <span>Store processing result</span>
-            </div>
-
-            <div class="processing-step" id="stepComplete">
-                <span class="step-icon">○</span>
-                <span>Processing completed</span>
-            </div>
-
-        </div>
-
-    </section>
+        </section>
 
 
-    <section class="card">
-
-        <div class="section-header">
-
-            <div>
-                <h2>Processed Documents</h2>
-
-                <p>
-                    Previously processed documents stored in the database.
-                </p>
-            </div>
-
-            <button
-                id="refreshDocuments"
-                class="secondary-button"
-            >
-                Refresh
-            </button>
-
-        </div>
+    </main>
 
 
-        <div class="table-container">
 
-            <table>
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
-                <thead>
-
-                    <tr>
-                        <th>Document Name</th>
-                        <th>Document Type</th>
-                        <th>Status</th>
-                        <th>Created At</th>
-                    </tr>
-
-                </thead>
-
-                <tbody id="documentsTableBody"></tbody>
-
-            </table>
-
-        </div>
-
-    </section>
-
-</main>
-
-<script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/dashboard.js"></script>
 
 </body>
+
 </html>

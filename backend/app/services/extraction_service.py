@@ -3,7 +3,7 @@ from __future__ import annotations
 import base64
 from pathlib import Path
 from typing import Any
-
+import os
 import cv2
 import numpy as np
 import pymupdf
@@ -33,23 +33,23 @@ class ExtractionService:
     GEMINI_JPEG_QUALITY = 70
 
     def __init__(
-        self,
-        tesseract_path: str | None = None,
-    ):
-        self.tesseract_path = (
-            tesseract_path
-            or r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-        )
-
-        if not Path(self.tesseract_path).exists():
-            raise FileNotFoundError(
-                f"Tesseract executable not found: "
-                f"{self.tesseract_path}"
-            )
-
-        pytesseract.pytesseract.tesseract_cmd = (
-            self.tesseract_path
-        )
+            self,
+            tesseract_path: str | None = None,
+        ):
+            if tesseract_path:
+                self.tesseract_path = tesseract_path
+            elif os.name == "nt":
+                self.tesseract_path = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+            else:
+                self.tesseract_path = "/opt/render/project/src/.render/tesseract/bin/tesseract"
+    
+            if not Path(self.tesseract_path).exists():
+                raise FileNotFoundError(
+                    f"Tesseract executable not found: "
+                    f"{self.tesseract_path}"
+                )
+    
+            pytesseract.pytesseract.tesseract_cmd = self.tesseract_path
 
 
     def preprocess_image(

@@ -24,13 +24,15 @@ class OCRService:
     """
 
     def __init__(self, tesseract_path: str | None = None):
-        self.tesseract_path = (
-            tesseract_path
-            or os.getenv(
-                "TESSERACT_PATH",
-                r"C:\Program Files\Tesseract-OCR\tesseract.exe",
-            )
-        )
+
+        if tesseract_path:
+            self.tesseract_path = tesseract_path
+        elif os.getenv("TESSERACT_PATH"):
+            self.tesseract_path = os.getenv("TESSERACT_PATH")
+        elif os.name == "nt":
+            self.tesseract_path = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+        else:
+            self.tesseract_path = "/opt/render/project/src/.render/tesseract/bin/tesseract"
 
         if not os.path.exists(self.tesseract_path):
             raise FileNotFoundError(
